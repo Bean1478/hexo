@@ -166,6 +166,98 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://bean1478.github.io/hexo/2019/12/09/start/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/hexo/images/avatar.gif">
+      <meta itemprop="name" content="JianLiu">
+      <meta itemprop="description" content="Welcome to my blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bean">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/hexo/2019/12/09/start/" class="post-title-link" itemprop="url">KNN原始论文</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-12-09 19:36:52" itemprop="dateCreated datePublished" datetime="2019-12-09T19:36:52+08:00">2019-12-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-10 14:13:39" itemprop="dateModified" datetime="2019-12-10T14:13:39+08:00">2019-12-10</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="KNN-最简单有效的分类算法之一"><a href="#KNN-最简单有效的分类算法之一" class="headerlink" title="KNN-最简单有效的分类算法之一"></a>KNN-最简单有效的分类算法之一</h4><h4 id="算法基于的原则"><a href="#算法基于的原则" class="headerlink" title="算法基于的原则"></a>算法基于的原则</h4><p>1.假设对于观察值相似的样本来说，他们的类别是相同的，即通过比较未分类样本与已知类别样本的相似度来确定未分类样本的类别分布概率(权值)</p>
+<p>2.不同样本间的距离越小即代表他们的相似度越高</p>
+<h4 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h4><p>1.对数据进行归一化处理(可选)</p>
+<p>​    数据中不同特征之间因度量的单位不同等原因，数值差距巨大，防止因为某一特征数值巨大而占主导因素的情况</p>
+<p>2.计算待分类样本与已知样本的<strong>距离</strong>，对距离进行<strong>排序</strong>，取距离最短的前k个样本，给每个样本按权值度量算法分配对应的权值，计算每个类别的<strong>权值总和</strong>，<strong>权值最大</strong>的类别作为改待分类样本的类别</p>
+<h5 id="归一化算法"><a href="#归一化算法" class="headerlink" title="归一化算法"></a>归一化算法</h5><p>1.最值归一化</p>
+<h3 id="x-scale-frac-x-x-min-x-max-x-min"><a href="#x-scale-frac-x-x-min-x-max-x-min" class="headerlink" title="$x_{scale}=\frac{x-x_{min}}{x_{max}-x_{min}}$"></a>$x_{scale}=\frac{x-x_{min}}{x_{max}-x_{min}}$</h3><p>把数据归一化到0-1的分布中</p>
+<p>适合分布有明显边界的情况</p>
+<p>2.均值方差归一化</p>
+<h3 id="x-scale-frac-x-x-mean-S"><a href="#x-scale-frac-x-x-mean-S" class="headerlink" title="$x_{scale}=\frac{x-x_{mean}}{S}$"></a>$x_{scale}=\frac{x-x_{mean}}{S}$</h3><p>把所有的数据归一到均值为0，方差为1的分布中</p>
+<p>适用于存在极端数据值的数据</p>
+<h5 id="距离度量算法"><a href="#距离度量算法" class="headerlink" title="距离度量算法"></a>距离度量算法</h5><p>1.欧式距离</p>
+<p>$dis(X,Y)=\sqrt{(X-Y)^T(X-Y)}$</p>
+<p>2.余弦距离</p>
+<p>$dis(X,Y)=1-\frac{XY}{||X||*||Y||}$</p>
+<p>3.马氏距离</p>
+<p>$dis(X,Y)=\sqrt{(X-Y)^TA(X-Y)}$</p>
+<p>其中A为协方差矩阵的逆</p>
+<h5 id="概率分布-权值-度量算法"><a href="#概率分布-权值-度量算法" class="headerlink" title="概率分布(权值)度量算法"></a>概率分布(权值)度量算法</h5><ol>
+<li>对前k小的距离，每个样本的权值都为1  即<script type="math/tex">w_j=1</script></li>
+</ol>
+<ol>
+<li>对前k小的距离通过距离的大小进行归一化处理，第一个为1，第k个为0</li>
+</ol>
+<p><img src="D:\blog\myblog\source\_posts\start\1575891997342.png" alt="1575891997342"></p>
+<ol>
+<li>采用距离的倒数作为权值 即$w_j=\frac{1}{d_j}$</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="https://bean1478.github.io/hexo/2019/12/05/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -295,7 +387,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/hexo/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
